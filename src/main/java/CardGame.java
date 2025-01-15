@@ -1,4 +1,6 @@
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
 
 /**
  * Card Game
@@ -15,9 +17,12 @@ import java.util.Random;
  */
 public class CardGame {
     public static void main(String[] args) {
+        Set<PlayingCard> cards = new HashSet<>();
+        while (cards.size() < 3) {
+            cards.add(generateRandomCard());
+        }
         int score = 0;
-        for (int i = 0; i < 3; i++) {
-            PlayingCard card = generateRandomCard();
+        for (PlayingCard card : cards) {
             System.out.println(card);
             score += card.getValue().ordinal() + 1;
         }
